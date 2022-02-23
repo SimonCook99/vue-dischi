@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     
+    <loadingState/>
+
     <myHeader/>
     <myMain/>
     
@@ -10,12 +12,14 @@
 <script>
 import myHeader from './components/myHeader.vue'
 import myMain from './components/myMain.vue'
+import loadingState from "./components/loadingState.vue"
 
 export default {
   name: 'App',
   components: {
     myHeader,
-    myMain
+    myMain,
+    loadingState
   }
 }
 </script>

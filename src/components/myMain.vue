@@ -19,7 +19,8 @@
         },
         data(){
             return{
-                songsList: []
+                songsList: [],
+                loading: true
             }
            
         },
@@ -31,7 +32,7 @@
                 axios.get("https://flynn.boolean.careers/exercises/api/array/music")
                     .then((risposta) =>{
                         this.songsList = risposta.data.response;
-                        console.log(this.songsList);
+                        this.loading = false;
                 });
             }
         },
@@ -42,6 +43,10 @@
 </script>
 
 <style scoped lang="scss">
+
+    main{
+        height: calc(100vh + 120px);
+    }
     .card-container{
         width: 80%;
         margin: 50px auto;

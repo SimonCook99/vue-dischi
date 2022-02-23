@@ -1,8 +1,12 @@
 <template>
     <main>
 
+        <div v-if="loading" class="loading">
+            <h1>Caricamento in corso, attendere prego...</h1>
+        </div>
+
         <!--ciclo che scorre la lista creata nella mounted, e chiama il componente myCard.vue-->
-        <div class="card-container">
+        <div v-else class="card-container">
             <myCard v-for="(song, index) in songsList" :key="index" :song="song"/>
         </div>
     </main>
@@ -46,6 +50,16 @@
 
     main{
         height: calc(100vh + 120px);
+        text-align: center;
+        position: relative;
+    }
+
+    h1{
+        color: white;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%);
     }
     .card-container{
         width: 80%;

@@ -24,6 +24,7 @@
         data(){
             return{
                 songsList: [],
+                listaGeneri: [],
                 loading: true
             }
            
@@ -37,6 +38,18 @@
                     .then((risposta) =>{
                         this.songsList = risposta.data.response;
                         this.loading = false;
+
+                        //riempio il vettore dei generi con questo ciclo che evita di inserire valori uguali tramite includes
+                        for(let i = 0; i<risposta.data.response.length; i++){
+                            if(!this.listaGeneri.includes(risposta.data.response[i].genre)){
+                                this.listaGeneri.push(risposta.data.response[i].genre);
+                            }
+                        }
+
+                        //infine creo l'evento a cui passerò la lista aggionrata, che App.vue riceverà
+                        this.$emit("listaGeneriRecuperata", this.listaGeneri);
+                        console.log(this.listaGeneri);
+
                 });
             }
         },

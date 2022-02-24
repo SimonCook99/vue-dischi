@@ -1,12 +1,17 @@
 <template>
   <header>
     <img src="../assets/logo-small.svg" alt="logo Spotify">
+
+    <select>
+      <option v-for="(genere, index) in listaGeneri" :key="index" :value="genere">{{genere}}</option>
+    </select>
   </header>
 </template>
 
 <script>
 export default {
   name: 'myHeader',
+  props: ["listaGeneri"]
   
 }
 </script>
@@ -16,6 +21,14 @@ export default {
   header{
     height: 70px;
     background-color: #2e3a46;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    select{
+      height: fit-content;
+      margin-right: 20px;
+    }
 
     img{
       max-height: 65%;

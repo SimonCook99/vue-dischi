@@ -2,8 +2,8 @@
   <div id="app">
     
 
-    <myHeader/>
-    <myMain/>
+    <myHeader :listaGeneri="listaGeneri"/>
+    <myMain @listaGeneriRecuperata= "trasferisciGeneri"/>
     
   </div>
 </template>
@@ -17,6 +17,16 @@ export default {
   components: {
     myHeader,
     myMain
+  },
+  data(){
+    return{
+      listaGeneri: []
+    }
+  },
+  methods:{
+    trasferisciGeneri(listaRecuperata){
+      this.listaGeneri = listaRecuperata;
+    }
   }
 }
 </script>

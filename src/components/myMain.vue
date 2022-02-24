@@ -7,7 +7,7 @@
 
         <!--ciclo che scorre la lista creata nella mounted, e chiama il componente myCard.vue-->
         <div v-else class="card-container">
-            <myCard v-for="(song, index) in songsList" :key="index" :song="song"/>
+            <myCard v-for="(song, index) in filterSongs" :key="index" :song="song"/>
         </div>
     </main>
 </template>
@@ -59,16 +59,24 @@
                 });
             },
 
-            filterSongs(){
-                this.filteredSongsList = this.songsList.filter( item => {
-                    if(item.genre.toLowerCase() == this.cercaGenere.toLowerCase()){
-                        return true;
-                    }else{
-                        return false;
-                    }
-                });
-            }
+            
 
+        },
+        computed: {
+            filterSongs(){
+                if(this.cercaGenere == ""){
+                    return this.songsList;
+                }else{
+                    return this.songsList.filter( item => {
+                        if(item.genre.toLowerCase() == this.cercaGenere.toLowerCase()){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    });
+                }
+                
+            }
         },
         mounted(){
             this.getSongs();

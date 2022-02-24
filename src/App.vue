@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     
-
+    <!--l'header monitorerà il filtragio del genere e gli verrà passata la lista generi da mostrare-->
     <myHeader @FiltraGenere="filtraGenere" :listaGeneri="listaGeneri"/>
+
+    <!--Il main monitorerà l'evento di recupero dei generi (a seguito della chiamata axios), e gli passiamo come parametro il genere da cercare-->
     <myMain @listaGeneriRecuperata= "trasferisciGeneri" :cercaGenere="genereDaCercare"/>
     
   </div>
@@ -25,12 +27,13 @@ export default {
     }
   },
   methods:{
+
     trasferisciGeneri(listaRecuperata){
       this.listaGeneri = listaRecuperata;
     },
+
     filtraGenere(genere){
       this.genereDaCercare = genere;
-      console.log(this.genereDaCercare);
     }
   }
 }

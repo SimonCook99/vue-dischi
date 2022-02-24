@@ -2,10 +2,14 @@
   <header>
     <img src="../assets/logo-small.svg" alt="logo Spotify">
 
+
+    <!--Popolazione deinamica della select tramite l'array di listageneri (passato come prop da App.vue) -->
     <select @change="filtraGenere($event)">
       <option value="">Filtra per genere</option>
       <option v-for="(genere, index) in listaGeneri" :key="index" :value="genere">{{genere}}</option>
     </select>
+
+
   </header>
 </template>
 
@@ -15,6 +19,8 @@ export default {
   props: ["listaGeneri"],
 
   methods:{
+
+    //metodo di filtraggio genere che prende come parametro l'evento ed estrapola il singolo valore value del tag option
     filtraGenere(event){
       console.log("Ho cambiato valore dell'input " + event.target.value);
       this.$emit("FiltraGenere", event.target.value);

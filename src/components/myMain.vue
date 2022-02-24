@@ -50,10 +50,11 @@
 
                         //infine creo l'evento a cui passerò la lista aggionrata, che App.vue riceverà
                         this.$emit("listaGeneriRecuperata", this.listaGeneri);
-                        console.log(this.listaGeneri);
+                        
+                        /* console.log(this.listaGeneri);
 
                         console.log(this.cercaGenere);
-                        /* this.filterSongs();
+                        this.filterSongs();
                         console.log(this.filteredSongsList); */
 
                 });

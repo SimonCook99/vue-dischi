@@ -2,8 +2,8 @@
   <div id="app">
     
 
-    <myHeader :listaGeneri="listaGeneri"/>
-    <myMain @listaGeneriRecuperata= "trasferisciGeneri"/>
+    <myHeader @FiltraGenere="filtraGenere" :listaGeneri="listaGeneri"/>
+    <myMain @listaGeneriRecuperata= "trasferisciGeneri" :cercaGenere="genereDaCercare"/>
     
   </div>
 </template>
@@ -20,12 +20,17 @@ export default {
   },
   data(){
     return{
-      listaGeneri: []
+      listaGeneri: [],
+      genereDaCercare: ""
     }
   },
   methods:{
     trasferisciGeneri(listaRecuperata){
       this.listaGeneri = listaRecuperata;
+    },
+    filtraGenere(genere){
+      this.genereDaCercare = genere;
+      console.log(this.genereDaCercare);
     }
   }
 }

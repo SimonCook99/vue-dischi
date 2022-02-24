@@ -2,7 +2,8 @@
   <header>
     <img src="../assets/logo-small.svg" alt="logo Spotify">
 
-    <select>
+    <select @change="filtraGenere($event)">
+      <option value="">Filtra per genere</option>
       <option v-for="(genere, index) in listaGeneri" :key="index" :value="genere">{{genere}}</option>
     </select>
   </header>
@@ -11,7 +12,14 @@
 <script>
 export default {
   name: 'myHeader',
-  props: ["listaGeneri"]
+  props: ["listaGeneri"],
+
+  methods:{
+    filtraGenere(event){
+      console.log("Ho cambiato valore dell'input " + event.target.value);
+      this.$emit("FiltraGenere", event.target.value);
+    }
+  }
   
 }
 </script>

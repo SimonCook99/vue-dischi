@@ -21,9 +21,11 @@
         components:{
             myCard
         },
+        props: ["cercaGenere"],
         data(){
             return{
                 songsList: [],
+                filteredSongsList: [],
                 listaGeneri: [],
                 loading: true
             }
@@ -50,8 +52,23 @@
                         this.$emit("listaGeneriRecuperata", this.listaGeneri);
                         console.log(this.listaGeneri);
 
+                        console.log(this.cercaGenere);
+                        /* this.filterSongs();
+                        console.log(this.filteredSongsList); */
+
+                });
+            },
+
+            filterSongs(){
+                this.filteredSongsList = this.songsList.filter( item => {
+                    if(item.genre.toLowerCase() == this.cercaGenere.toLowerCase()){
+                        return true;
+                    }else{
+                        return false;
+                    }
                 });
             }
+
         },
         mounted(){
             this.getSongs();
